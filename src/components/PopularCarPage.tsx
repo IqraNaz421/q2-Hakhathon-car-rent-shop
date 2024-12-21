@@ -4,6 +4,7 @@
 
 import Image from "next/image";
 import * as React from "react";
+import Link from "next/link";
 
 type CarCardProps = {
   name: string;
@@ -49,8 +50,8 @@ export const CarCard: React.FC<CarCardProps> = ({
         loading="lazy"
         src={image}
         alt={`${name} car`}
-        height={50}
-        width={50}
+        height={500}
+        width={500}
         className="object-contain mx-auto w-full h-40"
       />
       {/* Features */}
@@ -92,9 +93,12 @@ export const CarCard: React.FC<CarCardProps> = ({
       {/* Pricing and Button */}
       <div className="flex items-center justify-between mt-6">
         <div className="text-lg font-bold text-gray-900">${price}/day</div>
+
+        <Link href="/cardetails">
         <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">
           Rent Now
         </button>
+        </Link>
       </div>
     </div>
   );
@@ -111,6 +115,7 @@ export const PopularCarPage: React.FC = () => {
       capacity: "2 People",
       price: 120,
       favoriteIcon: "/images/red.png",
+     
     },
     {
       name: "Nissan GT-R",

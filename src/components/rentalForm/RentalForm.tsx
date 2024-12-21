@@ -172,6 +172,8 @@ export const RentalForm: React.FC = () => {
                   loading="lazy"
                   src="/images/tick.svg"
                   alt=""
+                  height={6}
+                  width={6}
                   className="w-8 aspect-square"
                 />
                 <div className="mt-4">

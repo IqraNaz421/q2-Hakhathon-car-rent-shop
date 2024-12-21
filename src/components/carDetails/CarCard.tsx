@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CarType } from './types';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CarCardProps {
   car: CarType;
@@ -80,12 +81,14 @@ export function CarCard({ car }: CarCardProps) {
           )}
         </div>
        
+        <Link href="/rentalform">
          <button
   className="gap-2 self-start px-6 py-3 mt-1 text-base font-medium tracking-tight text-center text-white bg-[#3563E9] rounded min-h-[10px] w-[130px] whitespace-nowrap"
   
 >
   Rent Now
 </button>
+</Link>
 
       </div>
     </div>

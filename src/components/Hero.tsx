@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Hero = () => {
   return (
@@ -23,9 +24,11 @@ const Hero = () => {
             <p className="text-white mb-6">
               Ease of doing a car rental safely and reliably. Of course at a low price.
             </p>
+            <Link href="/rentalform">
             <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
               Rental Car
             </button>
+            </Link>
             <Image
               src="/images/hero1.png"
               alt="Car"
@@ -50,9 +53,11 @@ const Hero = () => {
             <p className="text-white mb-6">
               Providing cheap car rental services and safe and comfortable facilities.
             </p>
+            <Link href="/rentalform">
             <button className="bg-[#54A6FF] text-white px-6 py-2 rounded-lg hover:bg-blue-700">
               Rental Car
             </button>
+            </Link>
             <Image
               src="/images/hero2.png"
               alt="Car"

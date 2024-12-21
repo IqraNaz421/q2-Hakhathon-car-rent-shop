@@ -1,5 +1,5 @@
 
-
+import Link from "next/link";
 import Image from "next/image";
 // import * as React from "react";
 
@@ -98,12 +98,15 @@ export const CarCard: React.FC<CarCardProps> = ({
           )}
         </div>
 
+       <Link href="/cardetails">
         <button
           className="gap-2 self-start px-6 py-3 mt-1 text-base font-medium tracking-tight text-center text-white bg-[#3563E9] rounded min-h-[10px] w-[130px] whitespace-nowrap"
           aria-label={`Rent ${name} now`}
         >
           Rent Now
         </button>
+        </Link>
+       
       </div>
     </div>
   );
