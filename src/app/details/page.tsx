@@ -183,7 +183,7 @@ const Category = () => {
                                     <Image className="size-5 rounded-full bg-background" src={'/images/heart.svg'} alt="heart-icon" width={100} height={100} />
                                 </div>
                             </div>
-                            <p className="opacity-72 font-thin">
+                            <p className="text-gray-800 font-normal">
                                 NISMO has become the embodiment of Nissans outstanding performance, inspired by the most unforgiving proving ground, the race track.
                             </p>
                             <div className="opacity-72 gap-4 font-thin flex flex-wrap mt-2">
@@ -201,7 +201,7 @@ const Category = () => {
                             <div className='flex justify-between mt-6'>
                                 <div className='flex flex-col'>
                                     <span className="text-black text-2xl">$80.00/  <span className='text-sm text-gray-700'>day</span></span>
-                                    <span className="text-gray-700 line-through">$100.00 <span className='text-sm text-gray-600'>day</span></span>
+                                    <span className="text-gray-500 line-through">$100.00 <span className='text-sm text-gray-600'>day</span></span>
                                 </div>
                                 <Link href="/payment">
                                 <Button text='Add To Rent' classes='bg-blue-600'/>
@@ -226,12 +226,12 @@ const Category = () => {
                                     <div className="text-xs opacity-50">CEO at Bukalapak</div>
                                 </div>
                             </div>
-                            <div className='text-xs opacity-50 flex flex-col items-end gap-2'>
+                            <div className='text-xs flex flex-col items-end gap-2'>
                                 21 July 2022
                                 <Image className="w-20" src={'/images/stars.png'} alt="stars-icon" width={100} height={100} />
                             </div>
                         </div>
-                        <p className="text-xs font-thin opacity-50 ml-14 mt-4 text-[#596780]">
+                        <p className="text-xs font-normal  ml-14 mt-4 text-gray-700">
                             We are very happy with the service from the MORENT App. Morent has a low price and also a large variety of cars with good and comfortable facilities. In addition, the service provided by the officers is also very friendly and very polite.
                         </p>
                     </div>
@@ -244,17 +244,17 @@ const Category = () => {
                                     <div className="text-xs opacity-50">CEO at Amazon</div>
                                 </div>
                             </div>
-                            <div className='text-xs opacity-50 flex flex-col items-end gap-2'>
+                            <div className='text-xs flex flex-col items-end gap-2'>
                                 21 July 2022
                                 <Image className="w-20" src={'/images/stars.png'} alt="stars-icon" width={100} height={100} />
                             </div>
                         </div>
-                        <p className="text-xs font-thin opacity-50 ml-14 mt-4 text-[#596780]">
+                        <p className="text-xs font-normal text-gray-700 ml-14 mt-4">
                             We are greatly helped by the services of the MORENT Application. Morent has low prices and also a wide variety of cars with good and comfortable facilities. In addition, the service provided by the officers is also very friendly and very polite.
                         </p>
                     </div>
 
-                    <div className="flex gap-3 justify-center text-[#596780]">
+                    <div className="flex gap-3 justify-center text-gray-800">
                         Show All
                         <Image className="w-4" src={'/images/arrow-down.svg'} alt="arrow-icon" width={100} height={100} />
 
