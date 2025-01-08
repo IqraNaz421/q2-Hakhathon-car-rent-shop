@@ -81,7 +81,7 @@ export function CarCard({ car }: CarCardProps) {
           )}
         </div>
        
-        <Link href="/rentalform">
+        <Link href="/details">
          <button
   className="gap-2 self-start px-6 py-3 mt-1 text-base font-medium tracking-tight text-center text-white bg-[#3563E9] rounded min-h-[10px] w-[130px] whitespace-nowrap"
   

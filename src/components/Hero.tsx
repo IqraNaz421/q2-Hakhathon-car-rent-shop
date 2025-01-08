@@ -24,7 +24,7 @@ const Hero = () => {
             <p className="text-white mb-6">
               Ease of doing a car rental safely and reliably. Of course at a low price.
             </p>
-            <Link href="/rentalform">
+            <Link href="/admin">
             <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
               Rental Car
             </button>
@@ -53,7 +53,7 @@ const Hero = () => {
             <p className="text-white mb-6">
               Providing cheap car rental services and safe and comfortable facilities.
             </p>
-            <Link href="/rentalform">
+            <Link href="/admin">
             <button className="bg-[#54A6FF] text-white px-6 py-2 rounded-lg hover:bg-blue-700">
               Rental Car
             </button>

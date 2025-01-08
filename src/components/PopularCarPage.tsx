@@ -94,7 +94,7 @@ export const CarCard: React.FC<CarCardProps> = ({
       <div className="flex items-center justify-between mt-6">
         <div className="text-lg font-bold text-gray-900">${price}/day</div>
 
-        <Link href="/cardetails">
+        <Link href="/details">
         <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">
           Rent Now
         </button>
@@ -161,4 +161,13 @@ export const PopularCarPage: React.FC = () => {
       </div>
     </div>
   );
+
+
+
+
+
+
+
+
+  
 };

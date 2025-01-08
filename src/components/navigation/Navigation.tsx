@@ -9,25 +9,25 @@ export const Navigation: React.FC = () => {
       src: "/images/1.svg",
       alt: "Navigation icon 1",
       className: "w-11 rounded-none",
-      link: "/cardetails"
+      link: "/details"
     },
     {
       src: "/images/2.svg",
       alt: "Navigation icon 2",
       className: "w-11 rounded-none",
-      link: "/dashboard"
+      link: "/category"
     },
     {
       src: "/images/3.svg",
       alt: "Navigation icon 3",
       className: "w-11 rounded-none",
-      link: "/rentalform"
+      link: "/admin"
     },
     {
       src: "/images/4.png",
       alt: "Profile icon",
       className: "w-11 rounded-[90px]",
-      link: "/acount"
+      link: "/payment"
     }
   ];
 

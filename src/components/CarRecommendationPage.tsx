@@ -98,11 +98,8 @@ export const CarCard: React.FC<CarCardProps> = ({
           )}
         </div>
 
-       <Link href="/cardetails">
-        <button
-          className="gap-2 self-start px-6 py-3 mt-1 text-base font-medium tracking-tight text-center text-white bg-[#3563E9] rounded min-h-[10px] w-[130px] whitespace-nowrap"
-          aria-label={`Rent ${name} now`}
-        >
+<Link href="/details">
+        <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">
           Rent Now
         </button>
         </Link>
@@ -215,11 +212,13 @@ export const CarRecommendationPage: React.FC = () => {
         ))}
       </div>
       <div className="justify-center flex mt-12">
+        <Link href="/category">
         <button
           className="gap-2 px-6 py-3 text-base font-medium tracking-tight flex justify-center text-center text-white bg-[#3563E9] rounded min-h-[10px] w-[170px] whitespace-nowrap"
         >
           Show more cars
         </button>
+        </Link>
       </div>
     </div>
   );
