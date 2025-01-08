@@ -72,26 +72,26 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center gap-4 mt-8 bg-white p-6 rounded-lg shadow-md">
           {/* Pick-Up Section */}
           <div className="flex-1">
-            <h3 className="text-lg font-medium mb-2">Pick-Up</h3>
+            <h3 className="text-lg font-medium text-black mb-2">Pick-Up</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm mb-1">Locations</label>
-                <select className="w-full border rounded-md p-2">
+                <label className="block text-sm text-black mb-1">Locations</label>
+                <select className="w-full border bg-white text-black rounded-md p-2">
                   <option>Select your city</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm mb-1">Date</label>
+                <label className="block text-black  text-sm mb-1">Date</label>
                 <input
                   type="date"
-                  className="w-full border rounded-md p-2"
+                  className="w-full border bg-white text-black rounded-md p-2"
                 />
               </div>
               <div>
-                <label className="block text-sm mb-1">Time</label>
+                <label className="block text-black text-sm mb-1">Time</label>
                 <input
                   type="time"
-                  className="w-full border rounded-md p-2"
+                  className="w-full border bg-white text-black rounded-md p-2"
                 />
               </div>
             </div>
@@ -106,26 +106,26 @@ const Hero = () => {
 
           {/* Drop-Off Section */}
           <div className="flex-1">
-            <h3 className="text-lg font-medium mb-2">Drop-Off</h3>
+            <h3 className="text-lg text-black font-medium mb-2">Drop-Off</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm mb-1">Locations</label>
-                <select className="w-full border rounded-md p-2">
+                <label className="block text-black text-sm mb-1">Locations</label>
+                <select className="w-full border bg-white text-black rounded-md p-2">
                   <option>Select your city</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm mb-1">Date</label>
+                <label className="block text-black text-sm mb-1">Date</label>
                 <input
                   type="date"
-                  className="w-full border rounded-md p-2"
+                  className="w-full border bg-white text-black rounded-md p-2"
                 />
               </div>
               <div>
-                <label className="block text-sm mb-1">Time</label>
+                <label className="block text-black text-sm mb-1">Time</label>
                 <input
                   type="time"
-                  className="w-full border rounded-md p-2"
+                  className="w-full border bg-white text-black rounded-md p-2"
                 />
               </div>
             </div>
