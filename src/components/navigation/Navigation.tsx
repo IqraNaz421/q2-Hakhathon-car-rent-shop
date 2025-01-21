@@ -28,6 +28,12 @@ export const Navigation: React.FC = () => {
       alt: "Profile icon",
       className: "w-11 rounded-[90px]",
       link: "/payment"
+    },
+    {
+      src: "/images/image.png",
+      alt: "Profile icon",
+      className: "w-11 rounded-[90px]",
+      link: "./user"
     }
   ];
 
@@ -44,7 +50,7 @@ export const Navigation: React.FC = () => {
       </div>
 
       {/* Navigation Icons */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center  gap-5">
         <NavigationIcons icons={navigationIcons} />
       </div>
     </div>

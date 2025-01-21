@@ -53,7 +53,7 @@ const Card = ({ data }: { data: CARCARD }) => {
                 <span className="text-xl">{data.currPrice} <span className='text-sm opacity-50'>day</span></span>
                 <span className="text-xs opacity-50 line-through">{data.oldPrice} <span className='text-sm opacity-50'>day</span></span>
             </div>
-            <Link href="/details">
+            <Link href="/payment">
             <Button text='Rent Now' classes='bg-blue-600' />
             </Link>
         </div>

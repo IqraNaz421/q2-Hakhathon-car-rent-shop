@@ -1,7 +1,17 @@
+
+'use client'
 import Button from "@/components/Button"
 import Image from "next/image"
+import Link from "next/link"
+
 
 const Payment = () => {
+
+
+  
+
+
+
     return (
         <div className="flex justify-center bg-gray-200 py-6">
             <div className="w-[95vw] flex gap-6 flex-col-reverse lg:flex-row">
@@ -213,7 +223,11 @@ const Payment = () => {
                             </div>
                         </div>
 
+                          <Link href="/confirm">
                         <Button classes="bg-blue-600" text="Rent Now" />
+                        </Link>
+
+
 
 
                         <div className="flex flex-col gap-4">

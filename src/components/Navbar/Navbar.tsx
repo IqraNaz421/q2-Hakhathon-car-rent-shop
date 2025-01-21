@@ -37,11 +37,14 @@ const Navbar = () => {
         </div>
 
         <div className="lg:block hidden">
-          <IconButton icon="/setting.png" redDot={false} />
+          <IconButton icon="/images/setting.png" redDot={false} />
         </div>
 
         <div className="hidden md:block">
-          <IconButton icon="/user.png" redDot={false} />
+          <IconButton icon="/images/user.png" redDot={false} />
+        </div>
+        <div className="hidden md:block">
+          <IconButton icon="/images/image.png" redDot={false} />
         </div>
       </div>
     </div>
