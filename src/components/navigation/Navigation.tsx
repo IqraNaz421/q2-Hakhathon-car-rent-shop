@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { SearchBar } from "./SearchBar";
+import SearchBar from "./SearchBar";
 import { NavigationIcons } from "./NavigationIcons";
 
 export const Navigation: React.FC = () => {

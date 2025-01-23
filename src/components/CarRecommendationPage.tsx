@@ -623,7 +623,7 @@ const CarRecommendationPag: React.FC = () => {
     const fetchData = async () => {
       try {
         const query = await client.fetch(
-          `*[_type == "product"] {
+          `*[_type == "product"] [5..15]{
             _id,
             name,
             "price": pricePerDay,
