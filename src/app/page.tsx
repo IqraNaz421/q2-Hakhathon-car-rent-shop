@@ -6,6 +6,7 @@ import React from 'react';
 import Filter from '@/components/Filter';
 
 import About from '@/components/About';
+import Datafetch from '@/components/Datafetch';
 
 const page = () => {
   return (
@@ -20,11 +21,8 @@ const page = () => {
       <About/>
      
      
-      {/* <AnalyticsDashboard/> */}
-      {/* <UserProfile/> */}
-     
-      {/* <OrderTracking/> */}
-      {/* <Datafetch/> */}
+      
+    {/* <Datafetch/> */}
       
      
     </div>
