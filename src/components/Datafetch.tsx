@@ -86,57 +86,57 @@
 
 
 
-import { client } from '@/sanity/lib/client';
-import React from 'react';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+// import { client } from '@/sanity/lib/client';
+// import React from 'react';
+// import Image from 'next/image';
+// import { urlFor } from '@/sanity/lib/image';
 
-const Datafetch = async () => {
-  const query = await client.fetch(
-    `*[_type == "product"]{
-        _id,
-        name,
-        type,
-        originalprice,
-        transmission,
-        fuelCapacity,
-        seatingCapacity,
-        pricePerDay,
-        "imageUrl": image.asset->url
-      }`
-  );
+// const Datafetch = async () => {
+//   const query = await client.fetch(
+//     `*[_type == "product"]{
+//         _id,
+//         name,
+//         type,
+//         originalprice,
+//         transmission,
+//         fuelCapacity,
+//         seatingCapacity,
+//         pricePerDay,
+//         "imageUrl": image.asset->url
+//       }`
+//   );
 
-  console.log(query); // Log the fetched data for debugging
+//   console.log(query); // Log the fetched data for debugging
 
-  return (
-    <div>
-      {query.map((product: any) => {
-        return (
-          <div key={product._id} >
-            <h1>{product.name}</h1>
-            <p><strong>Type:</strong> {product.type}</p>
-            <p><strong>Original Price:</strong> ${product.originalprice}</p>
-            <p><strong>Transmission:</strong> {product.transmission}</p>
-            <p><strong>Fuel Capacity:</strong> {product.fuelCapacity}L</p>
-            <p><strong>Seating Capacity:</strong> {product.seatingCapacity}</p>
-            <p><strong>Price Per Day:</strong> ${product.pricePerDay}</p>
-            {product.imageUrl && (
-              <Image
-                src={urlFor(product.imageUrl).url()}
-                alt={product.name}
-                width={100}
-                height={100}
+//   return (
+//     <div>
+//       {query.map((product: any) => {
+//         return (
+//           <div key={product._id} >
+//             <h1>{product.name}</h1>
+//             <p><strong>Type:</strong> {product.type}</p>
+//             <p><strong>Original Price:</strong> ${product.originalprice}</p>
+//             <p><strong>Transmission:</strong> {product.transmission}</p>
+//             <p><strong>Fuel Capacity:</strong> {product.fuelCapacity}L</p>
+//             <p><strong>Seating Capacity:</strong> {product.seatingCapacity}</p>
+//             <p><strong>Price Per Day:</strong> ${product.pricePerDay}</p>
+//             {product.imageUrl && (
+//               <Image
+//                 src={urlFor(product.imageUrl).url()}
+//                 alt={product.name}
+//                 width={100}
+//                 height={100}
                 
-              />
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+//               />
+//             )}
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
 
-export default Datafetch;
+// export default Datafetch;
 
 
 

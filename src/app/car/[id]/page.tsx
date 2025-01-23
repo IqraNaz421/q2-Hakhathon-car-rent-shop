@@ -505,7 +505,7 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
             // Ensure image is always an array, even if it's a single URL or null
             image: Array.isArray(result.image) ? result.image : result.image ? [result.image] : [],
             availability: result.availability || false,
-            description: result.description || 'No description available.',
+            description: result.description || 'Select Your Favorite car.',
           });
         }
       } catch (error) {
@@ -543,7 +543,9 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
             ) : (
               <p>No images available</p>
             )}
-            <div className="flex gap-4 mt-4 overflow-x-auto">
+
+
+            {/* <div className="flex gap-4 mt-4 overflow-x-auto">
               {car?.image.map((img, index) => (
                 <Image
                   key={index}
@@ -554,7 +556,64 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
                   className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
                 />
               ))}
-            </div>
+            </div> */}
+               
+
+
+
+               <div className="flex gap-4 mt-4 overflow-x-auto">
+  {/* First Gallery */}
+  <div className="flex gap-4 mt-4 justify-start">
+    {car?.image.map((img, index) => (
+      <Image
+        key={index}
+        src={img}
+        alt={`${car.name} gallery ${index + 1}`}
+        width={100}
+        height={100}
+        className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
+      />
+    ))}
+  </div>
+
+  {/* Second Gallery */}
+  <div className="flex gap-4 mt-4 justify-start">
+    {car?.image.map((img, index) => (
+      <Image
+        key={index}
+        src={img}
+        alt={`${car.name} gallery ${index + 1}`}
+        width={100}
+        height={100}
+        className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
+      />
+    ))}
+  </div>
+
+  {/* Third Gallery */}
+  <div className="flex gap-4 mt-4 justify-start">
+    {car?.image.map((img, index) => (
+      <Image
+        key={index}
+        src={img}
+        alt={`${car.name} gallery ${index + 1}`}
+        width={100}
+        height={100}
+        className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
+      />
+    ))}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
           </div>
 
           {/* Right Side */}

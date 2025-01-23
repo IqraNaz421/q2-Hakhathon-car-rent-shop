@@ -596,6 +596,141 @@
 
 
 
+// 'use client';
+// import React, { useEffect, useState } from 'react';
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { FaGasPump, FaCogs, FaUserFriends } from 'react-icons/fa';
+// import { client } from '@/sanity/lib/client';
+
+// type Car = {
+//   id: string; // Since Sanity uses unique `_id`
+//   name: string;
+//   price: string;
+//   image: string;
+//   type: string;
+//   fuelCapacity: string;
+//   transmission: string;
+//   capacity: string;
+// };
+
+// const CarRecommendationPag: React.FC = () => {
+//   const [cars, setCars] = useState<Car[]>([]); // State to store fetched cars
+//   const [loading, setLoading] = useState(true); // Loading state
+
+//   // Fetch data from Sanity
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const query = await client.fetch(
+//           `*[_type == "product"] [5..15]{
+//             _id,
+//             name,
+//             "price": pricePerDay,
+//             "image": image.asset->url,
+//             type,
+//             "fuelCapacity": fuelCapacity,
+//             transmission,
+//             "capacity": seatingCapacity
+//           }`
+//         );
+//         setCars(
+//           query.map((car: any) => ({
+//             id: car._id,
+//             name: car.name || "Unknown Car",
+//             price: car.price || "N/A",
+//             image: car.image || "/fallback-image.png", // Fallback image
+//             type: car.type || "Unknown",
+//             fuelCapacity: car.fuelCapacity || "Unknown",
+//             transmission: car.transmission || "Unknown",
+//             capacity: car.capacity || "Unknown",
+//           }))
+//         );
+//       } catch (error) {
+//         console.error("Error fetching cars:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   if (loading) {
+//     return <p className="text-center py-8">Loading car recommendations...</p>;
+//   }
+
+//   return (
+//     <section className="py-8 bg-gray-100">
+//       <div className="container mx-auto text-center">
+//         <h2 className="text-2xl font-semibold mb-6">Car Recommendations</h2>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+//           {cars.map((car) => (
+//             <Link key={car.id} href={`/car/${car.id}`}>
+//               <div className="cursor-pointer bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 relative">
+//                 <div className="mt-6 mb-2 text-left">
+//                   <h3 className="text-lg font-bold">{car.name}</h3>
+//                   <p className="text-sm text-gray-500">{car.type}</p>
+//                 </div>
+
+//                 {/* Car Image */}
+//                 <div className="w-full h-48 mb-4 relative">
+//                   {car.image ? (
+//                     <Image
+//                       src={car.image}
+//                       alt={car.name}
+//                       layout="fill"
+//                       objectFit="contain"
+//                       className="rounded-md"
+//                     />
+//                   ) : (
+//                     <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
+//                       No Image
+//                     </div>
+//                   )}
+//                 </div>
+
+//                 {/* Icons and Labels */}
+//                 <div className="flex justify-between items-center text-gray-600 mb-4">
+//                   <p className="flex items-center text-sm">
+//                     <FaGasPump className="mr-2 text-blue-500" />
+//                     {car.fuelCapacity}
+//                   </p>
+//                   <p className="flex items-center text-sm">
+//                     <FaCogs className="mr-2 text-green-500" />
+//                     {car.transmission}
+//                   </p>
+//                   <p className="flex items-center text-sm">
+//                     <FaUserFriends className="mr-2 text-red-500" />
+//                     {car.capacity}
+//                   </p>
+//                 </div>
+
+//                 {/* Price and Rent Now Button */}
+//                 <div className="flex justify-between items-center">
+//                   <p className="text-lg font-extrabold text-black">${car.price}</p>
+//                   <button className="gap-2 px-6 py-2 text-base font-normal justify-center text-center text-white bg-[#3563E9] rounded">
+//                     Rent Now
+//                   </button>
+//                 </div>
+//               </div>
+//             </Link>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default CarRecommendationPag;
+
+
+
+
+
+
+
+
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -604,50 +739,63 @@ import { FaGasPump, FaCogs, FaUserFriends } from 'react-icons/fa';
 import { client } from '@/sanity/lib/client';
 
 type Car = {
-  id: string; // Since Sanity uses unique `_id`
+  id: string;
   name: string;
   price: string;
-  image: string;
+  image: string; // Ensure image is always a string
   type: string;
   fuelCapacity: string;
   transmission: string;
   capacity: string;
 };
 
+type CarSanityData = {
+  _id: string;
+  name: string;
+  pricePerDay: string | number;
+  image?: { asset?: { url?: string } };
+  type?: string;
+  fuelCapacity?: string;
+  transmission?: string;
+  seatingCapacity?: string;
+};
+
 const CarRecommendationPag: React.FC = () => {
-  const [cars, setCars] = useState<Car[]>([]); // State to store fetched cars
+  const [cars, setCars] = useState<Car[]>([]); // State for fetched cars
   const [loading, setLoading] = useState(true); // Loading state
 
   // Fetch data from Sanity
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const query = await client.fetch(
-          `*[_type == "product"] [5..15]{
+        const query = await client.fetch<CarSanityData[]>(
+          `*[_type == "product"][0..15] {
             _id,
             name,
-            "price": pricePerDay,
+            "pricePerDay": pricePerDay,
             "image": image.asset->url,
             type,
             "fuelCapacity": fuelCapacity,
             transmission,
-            "capacity": seatingCapacity
+            "seatingCapacity": seatingCapacity
           }`
         );
-        setCars(
-          query.map((car: any) => ({
-            id: car._id,
-            name: car.name || "Unknown Car",
-            price: car.price || "N/A",
-            image: car.image || "/fallback-image.png", // Fallback image
-            type: car.type || "Unknown",
-            fuelCapacity: car.fuelCapacity || "Unknown",
-            transmission: car.transmission || "Unknown",
-            capacity: car.capacity || "Unknown",
-          }))
-        );
+
+        // Map and format data safely
+        const mappedCars: Car[] = query.map((car) => ({
+          id: car._id,
+          name: car.name || 'Unknown Car',
+          price: car.pricePerDay ? car.pricePerDay.toString() : 'N/A',
+          image: typeof car.image === 'string' ? car.image : '/fallback-image.png', // Always set as string
+          type: car.type || 'Unknown Type',
+          fuelCapacity: car.fuelCapacity || 'Unknown Capacity',
+          transmission: car.transmission || 'Unknown Transmission',
+          capacity: car.seatingCapacity || 'Unknown Seating',
+        }));
+
+        setCars(mappedCars); // Update state
       } catch (error) {
-        console.error("Error fetching cars:", error);
+        console.error('Error fetching cars:', error);
       } finally {
         setLoading(false);
       }
@@ -675,19 +823,13 @@ const CarRecommendationPag: React.FC = () => {
 
                 {/* Car Image */}
                 <div className="w-full h-48 mb-4 relative">
-                  {car.image ? (
-                    <Image
-                      src={car.image}
-                      alt={car.name}
-                      layout="fill"
-                      objectFit="contain"
-                      className="rounded-md"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
-                      No Image
-                    </div>
-                  )}
+                  <Image
+                    src={car.image}
+                    alt={car.name}
+                    layout="fill"
+                    objectFit="contain"
+                    className="rounded-md"
+                  />
                 </div>
 
                 {/* Icons and Labels */}
@@ -708,7 +850,9 @@ const CarRecommendationPag: React.FC = () => {
 
                 {/* Price and Rent Now Button */}
                 <div className="flex justify-between items-center">
-                  <p className="text-lg font-extrabold text-black">${car.price}</p>
+                  <p className="text-lg font-extrabold text-black">
+                    {car.price !== 'N/A' ? `$${car.price}` : car.price}
+                  </p>
                   <button className="gap-2 px-6 py-2 text-base font-normal justify-center text-center text-white bg-[#3563E9] rounded">
                     Rent Now
                   </button>

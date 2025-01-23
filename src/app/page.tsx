@@ -6,7 +6,8 @@ import React from 'react';
 import Filter from '@/components/Filter';
 
 import About from '@/components/About';
-import Datafetch from '@/components/Datafetch';
+import AnalyticsDashboard from '@/components/AnalyticsDashboard';
+
 
 const page = () => {
   return (
@@ -19,10 +20,7 @@ const page = () => {
       {/* <PopularCarPage/> */}
       <CarRecommendationPag/>
       <About/>
-     
-     
-      
-    {/* <Datafetch/> */}
+     <AnalyticsDashboard/>
       
      
     </div>

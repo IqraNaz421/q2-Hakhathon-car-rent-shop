@@ -53,6 +53,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import sanityClient from '@sanity/client';
+import Image from 'next/image';
 
 interface Product {
   _id: string;
@@ -135,9 +136,11 @@ const SearchBar = () => {
               <li key={product._id} className="p-2 border-b hover:bg-gray-100">
                 <a href={`/car/${product._id}`} className="flex items-center space-x-3">
                   {product.imageUrl && (
-                    <img
+                    <Image
                       src={product.imageUrl}
                       alt={product.name}
+                      width={100}
+                      height={100}
                       className="w-16 h-16 sm:w-12 sm:h-12 object-cover rounded"
                     />
                   )}
