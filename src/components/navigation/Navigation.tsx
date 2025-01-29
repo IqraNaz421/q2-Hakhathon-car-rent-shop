@@ -15,19 +15,19 @@ export const Navigation: React.FC = () => {
       src: "/images/2.svg",
       alt: "Navigation icon 2",
       className: "w-11 rounded-none",
-      link: "/category"
+      link: "/notification"
     },
     {
       src: "/images/3.svg",
       alt: "Navigation icon 3",
       className: "w-11 rounded-none",
-      link: "/admin"
+      link: "/setting"
     },
     {
       src: "/images/4.png",
       alt: "Profile icon",
       className: "w-11 rounded-[90px]",
-      link: "/payment"
+      link: "/admin"
     },
     {
       src: "/images/image.png",

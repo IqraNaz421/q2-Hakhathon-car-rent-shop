@@ -1,27 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 'use client';
 import React from 'react';
 import { notFound } from 'next/navigation'; // For handling invalid IDs
@@ -217,6 +196,7 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
   if (!car) {
     notFound(); // Redirects to the 404 page
   }
+   
 
   return (
     <section className="py-12 bg-blue-50">
@@ -271,9 +251,10 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="flex gap-4 mt-4 flex-wrap">
-              <button className="py-3 px-6 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition w-full sm:w-auto">
+              {/* <button className="py-3 px-6 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition w-full sm:w-auto">
                 Book Now
-              </button>
+              </button> */}
+                
 
                        <Link href="/testdrive">
                   <button className="py-3 px-6 text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 transition w-full sm:w-auto">
@@ -295,3 +276,27 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
 };
 
 export default CarDetailPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
