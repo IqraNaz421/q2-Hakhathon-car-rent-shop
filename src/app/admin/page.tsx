@@ -1,7 +1,18 @@
+'use client'
 import Image from "next/image"
-const Category = () => {
+
+
+    
+
+    const Category = () => {
+     
     return (
-        <div className="flex justify-between ">
+
+
+         //step 1 
+      
+    
+         <div className="flex justify-between ">
             <div className="min-w-72 border-t hidden xl:flex flex-col p-6 gap-6">
                 <div className="text-xs opacity-50">MAIN MENU</div>
 
@@ -54,7 +65,10 @@ const Category = () => {
                     <Image className="size-6" src='/images/logout.png' alt="logout-icon" width={100} height={100} />
                     Log Out
                 </div>
-            </div>
+            </div> 
+
+
+
             <div className="md:px-16 px-6 py-8 bg-[#f6f7f9] w-full">
 
                 <div className="flex items-start gap-6 flex-col lg:flex-row">
@@ -366,6 +380,7 @@ const Category = () => {
                 </div>
             </div>
         </div>
+       
     )
 }
 

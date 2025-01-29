@@ -35,7 +35,7 @@ export const product = {
       title: 'Price Per Day',
     },
     {
-      name: 'originalPrice',
+      name: 'originalprice',
       type: 'number',
       title: 'Original Price',
       description: 'Original price of the product',

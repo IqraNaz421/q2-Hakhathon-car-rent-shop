@@ -282,10 +282,10 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
                     </Link>
   
                     <Link href="/contact">
-  <button className="py-3 px-6 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 transition w-full sm:w-auto">
-    Contact Dealer
-  </button>
-</Link>
+             <button className="py-3 px-6 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 transition w-full sm:w-auto">
+             Contact Dealer
+          </button>
+              </Link>
             </div>
           </div>
         </div>

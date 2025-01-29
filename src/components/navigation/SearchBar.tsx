@@ -53,6 +53,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import sanityClient from '@sanity/client';
+
 import Image from 'next/image';
 
 interface Product {

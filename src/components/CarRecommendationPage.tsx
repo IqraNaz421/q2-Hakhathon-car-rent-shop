@@ -422,168 +422,6 @@
 
 
 
-// 'use client';
-// import React from 'react';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { FaGasPump, FaCogs, FaUserFriends } from 'react-icons/fa';
-
-// type Car = {
-//   id: number;
-//   name: string;
-//   price: string;
-//   image: string;
-//   type: string;
-//   fuelCapacity: string;
-//   transmission: string;
-//   capacity: string;
-// };
-
-// const CarRecommendationPag: React.FC = () => {
-//   const cars: Car[] = [
-//     {
-//       id: 1,
-//       name: "BMW X5",
-//       price: "80.0/day",
-//       image: "/images/r2.png",
-//       type: "Gasoline",
-//       fuelCapacity: "60L",
-//       transmission: "Manual",
-//       capacity: "2People",
-//     },
-//     {
-//       id: 2,
-//       name: "Ford Mustang",
-//       price: "12.0/day",
-//       image: "/images/p1.png",
-//       type: "Hybrid",
-//       fuelCapacity: "5 L",
-//       transmission: "Manual",
-//       capacity: "4People",
-//     },
-//     {
-//       id: 3,
-//       name: "Audi A6",
-//       price: "/day",
-//       image: "/images/p3.png",
-//       type: "Electric",
-//       fuelCapacity: "70L",
-//       transmission: "Automatic",
-//       capacity: "5People",
-//     },
-//     {
-//       id: 4,
-//       name: "Mercedes-Benz S-Class",
-//       type: "Hybrid",
-//       image: "/images/r1.png",
-//       fuelCapacity: "80L",
-//       transmission: "Automatic",
-//       capacity: "5seats",
-//       price: "/day",
-//     },
-//     {
-//       id: 5,
-//       name: "Porsche 911",
-//       type: "Gasoline",
-//       image: "/images/r6.png",
-//       fuelCapacity: "60L",
-//       transmission: "Manual",
-//       capacity: "4seats",
-//       price: "/day",
-//     },
-//     {
-//       id: 6,
-//       name: "Lexus RX 350",
-//       type: "Hybrid",
-//       image: "/images/r7.png",
-//       fuelCapacity: "70L",
-//       transmission: "Automatic",
-//       capacity: "5seats",
-//       price: "78/day",
-//     },
-//     {
-//       id: 7,
-//       name: "Chevrolet Camaro",
-//       type: "Gasoline",
-//       image: "/images/r8.png",
-//       fuelCapacity: "65L",
-//       transmission: "Manual",
-//       capacity: "4seats",
-//       price: "95/day",
-//     },
-//     {
-//       id: 8,
-//       name: "Tesla Model 3",
-//       type: "Electric",
-//       image: "/images/r1.png",
-//       fuelCapacity: "1kWh",
-//       transmission: "Automatic",
-//       capacity: "5seats",
-//       price: "76/day",
-//     },
-//   ];
-
-//   return (
-//     <section className="py-8 bg-gray-100">
-//       <div className="container mx-auto text-center">
-//         <h2 className="text-2xl font-semibold mb-6">Car Recommendations</h2>
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-//           {cars.map((car) => (
-//             <Link key={car.id} href={`/car/${car.id}`}>
-//               <div className="cursor-pointer bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 relative">
-//                 <div className="mt-6 mb-2 text-left">
-//                   <h3 className="text-lg font-bold">{car.name}</h3>
-//                   <p className="text-sm text-gray-500">{car.type}</p>
-//                 </div>
-
-//                 {/* Car Image */}
-//                 <div className="w-full h-48 mb-4 relative">
-//                   <Image
-//                     src={car.image}
-//                     alt={car.name}
-//                     layout="fill"
-//                     objectFit="contain"
-//                     className="rounded-md"
-//                   />
-//                 </div>
-
-//                 {/* Icons and Labels */}
-//                 <div className="flex justify-between items-center text-gray-600 mb-4">
-//                   <p className="flex items-center text-sm">
-//                     <FaGasPump className="mr-2 text-blue-500" />
-//                     {car.fuelCapacity}
-//                   </p>
-//                   <p className="flex items-center text-sm">
-//                     <FaCogs className="mr-2 text-green-500" />
-//                     {car.transmission}
-//                   </p>
-//                   <p className="flex items-center text-sm">
-//                     <FaUserFriends className="mr-2 text-red-500" />
-//                     {car.capacity}
-//                   </p>
-//                 </div>
-
-//                 {/* Price and Rent Now Button */}
-//                 <div className="flex justify-between items-center">
-//                   <p className="text-lg font-extrabold text-black">${car.price}</p>
-//                   <button className="gap-2 px-6 py-2 text-base font-normal justify-center text-center text-white bg-[#3563E9] rounded">
-//                     Rent Now
-//                   </button>
-//                 </div>
-//               </div>
-//             </Link>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CarRecommendationPag;
-
-
-
-
 
 
 
@@ -731,6 +569,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -769,7 +618,7 @@ const CarRecommendationPag: React.FC = () => {
     const fetchData = async () => {
       try {
         const query = await client.fetch<CarSanityData[]>(
-          `*[_type == "product"][0..15] {
+          `*[_type == "product"][5..16] {
             _id,
             name,
             "pricePerDay": pricePerDay,

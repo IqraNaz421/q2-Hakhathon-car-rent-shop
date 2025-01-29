@@ -9,7 +9,7 @@ export const Navigation: React.FC = () => {
       src: "/images/1.svg",
       alt: "Navigation icon 1",
       className: "w-11 rounded-none",
-      link: "/details"
+      link: "/wishlist"
     },
     {
       src: "/images/2.svg",

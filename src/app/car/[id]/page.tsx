@@ -432,7 +432,274 @@
 
 
 
+// 'use client';
+// import React, { useEffect, useState } from 'react';
+// import { notFound } from 'next/navigation';
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { client } from '@/sanity/lib/client';
+
+// interface Car {
+//   id: string;
+//   name: string;
+//   price: number;
+//   discountPrice: number;
+//   brand: string;
+//   carType: string;
+//   year: number;
+//   engine: string;
+//   transmission: string;
+//   seatingCapacity: number;
+//   safety: string[];
+//   specialFeatures: string[];
+//   image: string[];
+//   availability: boolean;
+//   description: string;
+// }
+
+// const CarDetailPage = ({ params }: { params: { id: string } }) => {
+//   const [car, setCar] = useState<Car | null>(null);
+//   const [loading, setLoading] = useState(true);
+
+//   const carId = params.id;
+
+//   useEffect(() => {
+//     const fetchCarDetails = async () => {
+//       try {
+//         const query = `
+//           *[_type == "product" && _id == $id][0]{
+//             _id,
+//             name,
+//             "price": pricePerDay,
+//             "discountPrice": discountPricePerDay,
+//             brand,
+//             "carType": type,
+//             year,
+//             engine,
+//             transmission,
+//             "seatingCapacity": seatingCapacity,
+//             safety,
+//             specialFeatures,
+//             "image": image.asset->url,
+//             availability,
+//             description
+//           }
+//         `;
+//         const result = await client.fetch(query, { id: carId });
+//         if (!result) {
+//           notFound();
+//         } else {
+//           setCar({
+//             id: result._id,
+//             name: result.name,
+//             price: result.price || 0,
+//             discountPrice: result.discountPrice || 0,
+//             brand: result.brand || 'Unknown',
+//             carType: result.carType || 'Unknown',
+//             year: result.year || 0,
+//             engine: result.engine || 'Unknown',
+//             transmission: result.transmission || 'Unknown',
+//             seatingCapacity: result.seatingCapacity || 0,
+//             safety: result.safety || [],
+//             specialFeatures: result.specialFeatures || [],
+//             // Ensure image is always an array, even if it's a single URL or null
+//             image: Array.isArray(result.image) ? result.image : result.image ? [result.image] : [],
+//             availability: result.availability || false,
+//             description: result.description || 'Select Your Favorite car.',
+//           });
+//         }
+//       } catch (error) {
+//         console.error('Error fetching car details:', error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchCarDetails();
+//   }, [carId]);
+
+//   if (loading) {
+//     return <p className="text-center py-8">Loading car details...</p>;
+//   }
+
+//   if (!car) {
+//     notFound();
+//   }
+
+//   return (
+//     <section className="py-12 bg-blue-50">
+//       <div className="container mx-auto px-4">
+//         <div className="bg-white p-8 rounded-lg shadow-xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+//           {/* Left Side */}
+//           <div>
+//             {car?.image.length > 0 ? (
+//               <Image
+//                 src={car.image[0]}
+//                 alt={car.name}
+//                 width={500}
+//                 height={600}
+//                 className="w-full h-auto rounded-lg shadow-md mb-4"
+//               />
+//             ) : (
+//               <p>No images available</p>
+//             )}
+
+
+
+
+//                <div className="flex gap-4 mt-4 overflow-x-auto">
+//   {/* First Gallery */}
+//   <div className="flex gap-4 mt-4 justify-start">
+//     {car?.image.map((img, index) => (
+//       <Image
+//         key={index}
+//         src={img}
+//         alt={`${car.name} gallery ${index + 1}`}
+//         width={100}
+//         height={100}
+//         className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
+//       />
+//     ))}
+//   </div>
+
+//   {/* Second Gallery */}
+//   <div className="flex gap-4 mt-4 justify-start">
+//     {car?.image.map((img, index) => (
+//       <Image
+//         key={index}
+//         src={img}
+//         alt={`${car.name} gallery ${index + 1}`}
+//         width={100}
+//         height={100}
+//         className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
+//       />
+//     ))}
+//   </div>
+
+//   {/* Third Gallery */}
+//   <div className="flex gap-4 mt-4 justify-start">
+//     {car?.image.map((img, index) => (
+//       <Image
+//         key={index}
+//         src={img}
+//         alt={`${car.name} gallery ${index + 1}`}
+//         width={100}
+//         height={100}
+//         className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
+//       />
+//     ))}
+//   </div>
+// </div>
+
+
+
+
+
+
+
+//           </div>
+
+//           {/* Right Side */}
+//           <div className="flex flex-col justify-center space-y-4">
+//             <h1 className="text-3xl font-bold text-blue-800">{car.name}</h1>
+//             <p className="text-gray-600 italic">{car.description}</p>
+//             <ul className="list-none text-gray-600 space-y-2">
+//               <li>Brand: <span className="text-blue-800 font-semibold">{car.brand}</span></li>
+//               <li>Type: <span className="text-blue-800 font-semibold">{car.carType}</span></li>
+//               <li>Year: <span className="text-blue-800 font-semibold">{car.year}</span></li>
+//               <li>Engine: <span className="text-blue-800 font-semibold">{car.engine}</span></li>
+//               <li>Transmission: <span className="text-blue-800 font-semibold">{car.transmission}</span></li>
+//               <li>Seating Capacity: <span className="text-blue-800 font-semibold">{car.seatingCapacity}</span></li>
+//               <li>
+//                 Availability: <span className={`font-bold ${car.availability ? 'text-green-600' : 'text-red-600'}`}>
+//                   {car.availability ? 'Available' : 'Not Available'}
+//                 </span>
+//               </li>
+//             </ul>
+
+//             <div>
+//               <p className="text-gray-600">
+//                 <span className="line-through text-gray-500">${car.price}</span>{' '}
+//                 <span className="text-red-600 font-bold">${car.discountPrice}</span>
+//               </p>
+//             </div>
+
+//             <div className="flex gap-4 mt-4 flex-wrap">
+//               <Link href="/payment">
+//                 <button className="py-3 px-6 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition w-full sm:w-auto">
+//                   Book Now
+//                 </button>
+//               </Link>
+//               <Link href="/testdrive">
+//                 <button className="py-3 px-6 text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 transition w-full sm:w-auto">
+//                   Test Drive
+//                 </button>
+//               </Link>
+//               <Link href="/contact">
+//                 <button className="py-3 px-6 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 transition w-full sm:w-auto">
+//                   Contact Dealer
+//                 </button>
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default CarDetailPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 'use client';
+import { FaHeart } from "react-icons/fa";
 import React, { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -444,7 +711,7 @@ interface Car {
   name: string;
   price: number;
   discountPrice: number;
-  brand: string;
+  // brand: string;
   carType: string;
   year: number;
   engine: string;
@@ -460,6 +727,7 @@ interface Car {
 const CarDetailPage = ({ params }: { params: { id: string } }) => {
   const [car, setCar] = useState<Car | null>(null);
   const [loading, setLoading] = useState(true);
+  const [wishlist, setWishlist] = useState<Car[]>([]); // Wishlist state
 
   const carId = params.id;
 
@@ -472,10 +740,10 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
             name,
             "price": pricePerDay,
             "discountPrice": discountPricePerDay,
-            brand,
+            
             "carType": type,
             year,
-            engine,
+           engine,
             transmission,
             "seatingCapacity": seatingCapacity,
             safety,
@@ -493,19 +761,18 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
             id: result._id,
             name: result.name,
             price: result.price || 0,
-            discountPrice: result.discountPrice || 0,
-            brand: result.brand || 'Unknown',
+            discountPrice: result.discountPrice || 64.87,
+            // brand: result.brand || 'Unknown',
             carType: result.carType || 'Unknown',
-            year: result.year || 0,
-            engine: result.engine || 'Unknown',
+            year: result.year || 2023,
+            engine: result.engine || 'Electric',
             transmission: result.transmission || 'Unknown',
             seatingCapacity: result.seatingCapacity || 0,
             safety: result.safety || [],
             specialFeatures: result.specialFeatures || [],
-            // Ensure image is always an array, even if it's a single URL or null
             image: Array.isArray(result.image) ? result.image : result.image ? [result.image] : [],
-            availability: result.availability || false,
-            description: result.description || 'Select Your Favorite car.',
+            availability: result.availability || true,
+            description: result.description || 'Book Your car.',
           });
         }
       } catch (error) {
@@ -517,6 +784,39 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
 
     fetchCarDetails();
   }, [carId]);
+
+  useEffect(() => {
+    // Load wishlist from localStorage on component mount
+    const storedWishlist = localStorage.getItem('wishlist');
+    if (storedWishlist) {
+      setWishlist(JSON.parse(storedWishlist));
+    }
+  }, []);
+
+  const handleBookNow = () => {
+    if (car) {
+      localStorage.setItem('selectedCar', JSON.stringify(car)); // Car details save karna
+      window.location.href = '/payment2'; // Payment page par redirect karna
+    }
+  };
+  
+
+  useEffect(() => {
+    // Save wishlist to localStorage whenever it updates
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  const handleAddToWishlist = () => {
+    if (car) {
+      const isAlreadyInWishlist = wishlist.some((item) => item.id === car.id);
+      if (!isAlreadyInWishlist) {
+        setWishlist((prevWishlist) => [...prevWishlist, car]);
+        alert(`${car.name} has been added to your wishlist!`);
+      } else {
+        alert(`${car.name} is already in your wishlist.`);
+      }
+    }
+  };
 
   if (loading) {
     return <p className="text-center py-8">Loading car details...</p>;
@@ -544,27 +844,9 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
               <p>No images available</p>
             )}
 
-
-            {/* <div className="flex gap-4 mt-4 overflow-x-auto">
-              {car?.image.map((img, index) => (
-                <Image
-                  key={index}
-                  src={img}
-                  alt={`${car.name} gallery ${index + 1}`}
-                  width={100}
-                  height={100}
-                  className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
-                />
-              ))}
-            </div> */}
-               
-
-
-
-               <div className="flex gap-4 mt-4 overflow-x-auto">
-  {/* First Gallery */}
-  <div className="flex gap-4 mt-4 justify-start">
-    {car?.image.map((img, index) => (
+      <div className="flex gap-4 mt-4 overflow-x-auto">
+     <div className="flex gap-4 mt-4 justify-start">
+          {car?.image.map((img, index) => (
       <Image
         key={index}
         src={img}
@@ -574,7 +856,7 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
         className="w-36 h-24 rounded-lg cursor-pointer shadow-md hover:scale-105 transition-transform"
       />
     ))}
-  </div>
+       </div>
 
   {/* Second Gallery */}
   <div className="flex gap-4 mt-4 justify-start">
@@ -604,24 +886,16 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
     ))}
   </div>
 </div>
+   </div>
 
 
-
-
-
-
-
-
-
-
-          </div>
 
           {/* Right Side */}
           <div className="flex flex-col justify-center space-y-4">
             <h1 className="text-3xl font-bold text-blue-800">{car.name}</h1>
             <p className="text-gray-600 italic">{car.description}</p>
             <ul className="list-none text-gray-600 space-y-2">
-              <li>Brand: <span className="text-blue-800 font-semibold">{car.brand}</span></li>
+              {/* <li>Brand: <span className="text-blue-800 font-semibold">{car.brand}</span></li> */}
               <li>Type: <span className="text-blue-800 font-semibold">{car.carType}</span></li>
               <li>Year: <span className="text-blue-800 font-semibold">{car.year}</span></li>
               <li>Engine: <span className="text-blue-800 font-semibold">{car.engine}</span></li>
@@ -642,21 +916,37 @@ const CarDetailPage = ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="flex gap-4 mt-4 flex-wrap">
-              <Link href="/payment">
-                <button className="py-3 px-6 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition w-full sm:w-auto">
+              <button
+           onClick={handleAddToWishlist}
+          className="p-3 text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 transition  sm:w-auto"
+             >
+              <FaHeart className="w-6 h-6" />
+             </button>
+             {/* <Link href="/payment">
+                <button className="py-3 px-3 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition  sm:w-auto">
                   Book Now
                 </button>
-              </Link>
+              </Link> */}
+              <button
+  onClick={handleBookNow}
+  className="py-3 px-3 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition sm:w-auto"
+>
+  Book Now
+</button>
+
               <Link href="/testdrive">
-                <button className="py-3 px-6 text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 transition w-full sm:w-auto">
-                  Test Drive
-                </button>
+                  <button className="py-3 px-3 text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 transition sm:w-auto">
+              Test Drive
+          </button>
+            </Link>
+             <Link href="/contact">
+             <button className="py-3 px-6 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 transition  sm:w-auto">
+             Contact Dealer
+          </button>
               </Link>
-              <Link href="/contact">
-                <button className="py-3 px-6 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 transition w-full sm:w-auto">
-                  Contact Dealer
-                </button>
-              </Link>
+             
+
+             
             </div>
           </div>
         </div>
